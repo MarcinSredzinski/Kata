@@ -1,12 +1,7 @@
-﻿using System;
+﻿using KataConsole.Sorting.Visualization;
 
-namespace KataConsole
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
+
+int[] toSort = new int[] { 1, 6, 8, 9, 4, 3 };
+BubbleSortVisualization bsw = new BubbleSortVisualization(toSort);
+
+bsw.Sort(ref toSort);
