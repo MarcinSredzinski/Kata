@@ -12,6 +12,8 @@ namespace Kata.Tests.Sorting
 
         [Theory]
         [InlineData(new int[] { 1, 10, 11, 15, 4, 6 })]
+        [InlineData(new int[] { -1, 10, 11, 15, 4, 6, 0, int.MinValue })]
+        [InlineData(new int[] { 1, 10, 11, 15, 4, 6, 1 })]
         public void ElementsShouldBeSorted(int[] toSort)
         {
             //Arrange
