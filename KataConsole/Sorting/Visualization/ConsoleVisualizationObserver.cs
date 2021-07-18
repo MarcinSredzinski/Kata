@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace KataConsole.Sorting.Visualization
 {
-    public class BubbleSortVisualization
+    public class ConsoleVisualizationObserver : IObserver
     {
-        private readonly string ClearingLine;
-
-        public BubbleSortVisualization(int[] collection)
-        {
-            ClearingLine = CreateClearingLine(collection);
-        }
+        private string _clearingLine;
 
         private string CreateClearingLine(int[] collection)
         {
@@ -43,11 +38,11 @@ namespace KataConsole.Sorting.Visualization
                     }
                     toDisplay.Append('-');
                 }
-                Console.WriteLine(ClearingLine);
+                Console.WriteLine(_clearingLine);
                 Console.SetCursorPosition(0, position);
                 switch (lowerNumber)
                 {
-                    case null: 
+                    case null:
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         break;
                     case { } intVal when intVal == lowerNumber:
@@ -65,25 +60,10 @@ namespace KataConsole.Sorting.Visualization
             Thread.Sleep(1000);
         }
 
-        public void Sort(ref int[] toSort)
+        public void Update(ISubject subject)
         {
-            var isMoved = false;
-            do
-            {
-                isMoved = false;
-                for (int i = 0; i < toSort.Length - 1; i++)
-                {
-                    if (toSort[i] > toSort[i + 1])
-                    {
-                        var lowerValue = toSort[i + 1];
-                        toSort[i + 1] = toSort[i];
-                        toSort[i] = lowerValue;
-                        isMoved = true;
-                        Visualize(toSort, lowerValue);
-                    }
-                }
-            } while (isMoved);
-            Visualize(toSort, null);
+            _clearingLine = CreateClearingLine(subject.ToSort);
+            Visualize(subject.ToSort, subject.LowerValue);
         }
     }
 }
