@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using FluentAssertions;
+﻿using FluentAssertions;
 using KataConsole.Sorting;
+using Xunit;
 
 namespace Kata.Tests.Sorting
 {
@@ -20,7 +17,6 @@ namespace Kata.Tests.Sorting
             var bubbleSort = new BubbleSort();
             //Act
             bubbleSort.Sort(ref toSort);
-
             //Assert
             toSort.Should().BeInAscendingOrder();
         }

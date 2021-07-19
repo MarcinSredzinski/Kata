@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KataConsole.Sorting
+﻿namespace KataConsole.Sorting
 {
-  public  interface IObserver
+    public interface IObserver
     {
         void Update(ISubject subject);
     }
