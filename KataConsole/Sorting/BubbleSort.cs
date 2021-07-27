@@ -7,8 +7,12 @@ namespace KataConsole.Sorting
         private List<IObserver> _observers = new();
         public int[] ToSort { get; private set; }
         public int LowerValue { get; private set; }
+        public bool IsRunning { get; set; }
         public void Sort(ref int[] toSort)
         {
+            IsRunning = true;
+            ToSort = toSort;
+            Notify();
             bool isMoved;
             do
             {
@@ -26,12 +30,15 @@ namespace KataConsole.Sorting
                     }
                 }
             } while (isMoved);
+
+            IsRunning = false;
             Notify();
         }
 
-        public void Attach(IObserver observer)
+        public ISubject Attach(IObserver observer)
         {
             _observers.Add(observer);
+            return this;
         }
 
         public void Detach(IObserver observer)

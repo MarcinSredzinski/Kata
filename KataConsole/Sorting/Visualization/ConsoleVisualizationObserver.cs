@@ -55,7 +55,7 @@ namespace KataConsole.Sorting.Visualization
 
                 Console.WriteLine(toDisplay.ToString());
             }
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
         }
 
         public void Update(ISubject subject)
